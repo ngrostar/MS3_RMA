@@ -45,7 +45,7 @@ export class AboutPage {
   addData(){
     let alert = this.alertCtrl.create({
       title: 'Hinzufügen gedrückt',
-      subTitle: 'Du hast hinzufügen gedrückt!',
+      subTitle: 'Du hast hinzufügen gedrückt und dabei toll ausgesehen!',
       buttons: ['OK']
     });
     alert.present();
