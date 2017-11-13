@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Daten-Liste
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="addData()"><ion-icon name="add"></ion-icon></button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+
+    <ion-item-sliding *ngFor="let item of items">
+
+      <ion-item (click)="showAlert()">
+        {{item}}
+      </ion-item>
+
+      <ion-item-options>
+        <button ion-button icon-only (click)="deleteData(item)" danger>
+          <ion-icon name="trash"></ion-icon>
+        </button>
+      </ion-item-options>
+
+    </ion-item-sliding>
+
+  </ion-list>
+</ion-content>
