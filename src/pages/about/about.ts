@@ -1,15 +1,21 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
+import { Http } from '@angular/http';
+import 'rxjs/add/operator/map';
+
 
 @Component({
   selector: 'page-about',
-  templateUrl: 'about.html'
+  templateUrl: 'about.html',
 })
 export class AboutPage {
-
-  constructor(public navCtrl: NavController, public alertCtrl: AlertController) {
-
+  posts:any;
+  constructor(public navCtrl: NavController, public alertCtrl: AlertController,public http: Http) {
+    this.http.get('/assets/Sternwarten.json').subscribe(data => {
+      this.posts=data;
+      console.log(this.posts);
+    });
   }
   items = [
     'Pokémon Yellow',
@@ -31,9 +37,7 @@ export class AboutPage {
     'Halo'
   ];
 
-  itemSelected(item: string) {
-    console.log("Selected Item", item);
-  }
+
   showAlert() {
     let alert = this.alertCtrl.create({
       title: 'New Friend!',
@@ -58,5 +62,6 @@ export class AboutPage {
     });
     alert.present();
   }
+
 }
 
