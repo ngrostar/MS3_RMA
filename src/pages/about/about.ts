@@ -1,42 +1,27 @@
-import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
-import { AlertController } from 'ionic-angular';
-import { Http } from '@angular/http';
+import {Component} from '@angular/core';
+import {NavController} from 'ionic-angular';
+import {AlertController} from 'ionic-angular';
+import {Http} from '@angular/http';
 import 'rxjs/add/operator/map';
+import {Injectable} from '@angular/core';
+import 'rxjs/Rx';
 
 
 @Component({
   selector: 'page-about',
   templateUrl: 'about.html',
 })
-export class AboutPage {
-  posts:any;
-  constructor(public navCtrl: NavController, public alertCtrl: AlertController,public http: Http) {
-    this.http.get('/assets/Sternwarten.json').subscribe(data => {
-      this.posts=data;
-      console.log(this.posts);
-    });
-  }
-  items = [
-    'Pokémon Yellow',
-    'Super Metroid',
-    'Mega Man X',
-    'The Legend of Zelda',
-    'Pac-Man',
-    'Super Mario World',
-    'Street Fighter II',
-    'Half Life',
-    'Final Fantasy VII',
-    'Star Fox',
-    'Tetris',
-    'Donkey Kong III',
-    'GoldenEye 007',
-    'Doom',
-    'Fallout',
-    'GTA',
-    'Halo'
-  ];
 
+export class AboutPage {
+  posts: any;
+
+  constructor(public navCtrl: NavController, public alertCtrl: AlertController, public http: Http) {
+    this.http.get('/assets/Sternwarten.json').map(res => res.json()).subscribe(data => {
+      this.posts = data;
+    });
+
+    console.log("HALLO\n" + this.posts);
+  }
 
   showAlert() {
     let alert = this.alertCtrl.create({
@@ -46,7 +31,8 @@ export class AboutPage {
     });
     alert.present();
   }
-  addData(){
+
+  addData() {
     let alert = this.alertCtrl.create({
       title: 'Hinzufügen gedrückt',
       subTitle: 'Du hast hinzufügen gedrückt und dabei toll ausgesehen!',
@@ -54,10 +40,11 @@ export class AboutPage {
     });
     alert.present();
   }
-  deleteData(item){
+
+  deleteData(item) {
     let alert = this.alertCtrl.create({
       title: 'Löschen gedrückt',
-      subTitle: 'Du hast löschen gedrückt!'+item,
+      subTitle: 'Du hast löschen gedrückt!' + item,
       buttons: ['OK']
     });
     alert.present();
