@@ -1,6 +1,6 @@
 [{
-	"name": "Planetarium Osnabrueck",
-	"ort": "Osnabrueck",
+	"name": "Planetarium Osnabrück",
+	"ort": "Osnabrück Schölerberg",
 	"laenge": 52.249327,
 	"breite": 8.069599,
 	"jahr": 1986
@@ -20,21 +20,21 @@
 	"jahr": 1926
 },
 {
-	"name": "Thueringer Landessternwarte Tautenburg",
+	"name": "Thüringer Landessternwarte Tautenburg",
 	"ort": "Tautenburg",
 	"laenge": 50.98276,
 	"breite": 11.71055,
 	"jahr": 1960
 },
 {
-	"name": "Nikolaus-Copernicus-Planetarium Nuernberg",
-	"ort": "Nuernberg",
+	"name": "Nikolaus-Copernicus-Planetarium",
+	"ort": "Nürnberg",
 	"laenge": 49.448017,
 	"breite": 11.06307,
 	"jahr": 1927
 },
 {
-	"name": "Wilhelm-Foerster-Sternwarte Berlin",
+	"name": "Wilhelm-Foerster-Sternwarte",
 	"ort": "Berlin",
 	"laenge": 52.457551,
 	"breite": 13.349414,
@@ -55,7 +55,7 @@
 	"jahr": 1946
 },
 {
-	"name": "Bayerische Volkssternwarte Muenchen",
+	"name": "Bayerische Volkssternwarte",
 	"ort": "Muenchen",
 	"laenge": 48.121922,
 	"breite": 11.606862999999976,

@@ -23,10 +23,11 @@ export class AboutPage {
     console.log("HALLO\n" + this.posts);
   }
 
-  showAlert() {
+  showAlert(item) {
     let alert = this.alertCtrl.create({
-      title: 'New Friend!',
-      subTitle: 'Your friend, Obi wan Kenobi, just accepted your friend request!',
+      title: item.name,
+      subTitle: item.ort,
+      message: 'Eröffnet ' + item.jahr,
       buttons: ['OK']
     });
     alert.present();

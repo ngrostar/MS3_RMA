@@ -14,12 +14,12 @@
 
     <ion-item-sliding *ngFor="let post of posts">
 
-      <ion-item (click)="showAlert()">
+      <ion-item (click)="showAlert(post)">
         {{post.name}}
       </ion-item>
 
       <ion-item-options>
-        <button ion-button icon-only (click)="deleteData(item)" danger>
+        <button ion-button icon-only (click)="deleteData(post)" danger>
           <ion-icon name="trash"></ion-icon>
         </button>
       </ion-item-options>
