@@ -1,13 +1,13 @@
-{
-	"name": Planetarium Osnabrueck,
-	"ort": Osnabrueck,
+[{
+	"name": "Planetarium Osnabrueck",
+	"ort": "Osnabrueck",
 	"laenge": 52.249327,
 	"breite": 8.069599,
 	"jahr": 1986
 },
 {
-	"name": Sternwarte vom Naturwissenschaftlichen Verein,
-	"ort": Melle,
+	"name": "Sternwarte vom Naturwissenschaftlichen Verein",
+	"ort": "Melle",
 	"laenge": 52.20515,
 	"breite": 8.323383,
 	"jahr": 1996
@@ -67,4 +67,4 @@
 	"laenge": 53.48019,
 	"breite": 10.23938,
 	"jahr": 1912
-}
+}]
