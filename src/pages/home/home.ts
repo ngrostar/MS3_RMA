@@ -14,7 +14,7 @@ export class HomePage {
   }
 
   getGPS() {
-    alert("getting Location");
+    console.log("getting Location");
     this.geolocation.getCurrentPosition().then((resp) => {
       this.lat = resp.coords.latitude;
       this.long = resp.coords.longitude;
