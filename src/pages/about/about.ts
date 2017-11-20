@@ -7,6 +7,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/Rx';
 import { PopoverController } from 'ionic-angular';
 import {FormInputPage} from "../form-input/form-input";
+import { Events } from 'ionic-angular';
 
 @Component({
   selector: 'page-about',
@@ -16,12 +17,20 @@ import {FormInputPage} from "../form-input/form-input";
 export class AboutPage {
   posts: any;
 
-  constructor(public navCtrl: NavController, public alertCtrl: AlertController, public http: Http, public popoverCtrl: PopoverController) {
-    this.http.get('/assets/Sternwarten.json').map(res => res.json()).subscribe(data => {
-      this.posts = data;
-    });
+  constructor(public navCtrl: NavController, public alertCtrl: AlertController, public http: Http, public events: Events, public popoverCtrl: PopoverController) {
+    this.posts = [];
+    this.reloadItems();
 
-    console.log("HALLO\n" + this.posts);
+    console.log(this.posts);
+    if (this.posts.length==0) {
+      this.http.get('/assets/Sternwarten.json').map(res => res.json()).subscribe(data => {
+        this.posts = data;
+      });
+    }
+
+    events.subscribe('item:added', (name) => {
+      this.reloadItems();
+    });
   }
 
   showAlert(item) {
@@ -53,5 +62,22 @@ export class AboutPage {
     alert.present();*/
     console.log(localStorage.getItem("SternwarteASDF"));
   }
+
+  reloadItems() {
+    let zaehler = parseInt(localStorage.getItem("zaehler"));
+
+    if(!zaehler) {
+      zaehler = 0;
+    }
+
+    for (let i = 0; i < zaehler; i++) {
+      let key = "Sternwarte" + (i+1).toString();
+      let item = JSON.parse(localStorage.getItem(key));
+      if (item) {
+        this.posts[i] = item;
+      }
+    }
+  }
+
 }
 

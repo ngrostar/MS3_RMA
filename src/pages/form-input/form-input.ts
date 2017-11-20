@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {IonicPage, NavController, NavParams} from 'ionic-angular';
+import {AlertController} from 'ionic-angular';
+import { Events } from 'ionic-angular';
 
 /**
  * Generated class for the FormInputPage page.
@@ -16,42 +18,55 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class FormInputPage {
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public events: Events, public alertCtrl: AlertController,) {
   }
+
   //Idee: hier statt Variablen ein OBJEKT!
   zaehler;
   name;
-  eroeffnet;
+  jahr;
   ort;
-  object={
-    oname:String,
-    oeroefnnet:String,
-    oort:String
+  object = {
+    name: String,
+    jahr: String,
+    ort: String
   };
-  saveData(){
-    alert("Hinzufügen gedrückt");
-    this.zaehler=parseInt(localStorage.getItem("zaehler"));
-    if(!this.zaehler) {
-      if(localStorage.getItem("Sternwarte1")) { 
-        this.zaehler = 99;
-      } else {
-        this.zaehler = 0;
-      }
-    }
-    this.zaehler=this.zaehler+1;
-    localStorage.setItem("zaehler",this.zaehler);
 
-    this.object.oname=this.name;
-    this.object.oeroefnnet=this.eroeffnet;
-    this.object.oort=this.ort;
-    console.log(this.object);
-    localStorage.setItem("Sternwarte"+this.zaehler, JSON.stringify(this.object));
+  saveData() {
+    if (this.name && this.ort && this.jahr) {
+      this.zaehler = parseInt(localStorage.getItem("zaehler"));
+      if (!this.zaehler) {
+          this.zaehler = 0;
+      }
+      this.zaehler = this.zaehler + 1;
+      localStorage.setItem("zaehler", this.zaehler);
+
+      this.object.name = this.name;
+      this.object.jahr = this.jahr;
+      this.object.ort = this.ort;
+      console.log(this.object);
+      localStorage.setItem("Sternwarte" + this.zaehler.toString(), JSON.stringify(this.object));
+
+
+      let alert = this.alertCtrl.create({
+        title: this.name + " hinzugefügt!",
+        buttons: ['Danke für die Info']
+      });
+      alert.present();
+      this.events.publish('item:added', this.name);
+    } else {
+      let alert = this.alertCtrl.create({
+        subTitle: "Bitte füllen Sie alle Felder aus",
+        buttons: ['OK']
+      });
+      alert.present();
+    }
   }
-  restoreContents(){
+
     //stelle hier die Inhalte wieder her, sodass oben nicht immer alles überschrieben wird!!!
   }
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad FormInputPage');
   }
-
 }
