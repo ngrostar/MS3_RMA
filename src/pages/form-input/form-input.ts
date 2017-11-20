@@ -63,6 +63,7 @@ export class FormInputPage {
     }
   }
 
+  restoreContents() {
     //stelle hier die Inhalte wieder her, sodass oben nicht immer alles überschrieben wird!!!
   }
 
