@@ -25,8 +25,6 @@ export class AboutPage {
     this.http.get('/assets/Sternwarten.json').map(res => res.json()).subscribe(data => {
       this.posts = data;
     });
-
-    console.log("HALLO\n" + this.posts);
   }
 
   showAlert(item) {

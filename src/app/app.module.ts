@@ -13,6 +13,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import {SettingsPage} from "../pages/settings/settings";
 import {FormInputPage} from "../pages/form-input/form-input";
+import { Geolocation } from '@ionic-native/geolocation';  // https://ionicframework.com/docs/native/geolocation/
 
 @NgModule({
   declarations: [
@@ -43,7 +44,7 @@ import {FormInputPage} from "../pages/form-input/form-input";
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-
+    Geolocation,
   ]
 })
 export class AppModule {}
