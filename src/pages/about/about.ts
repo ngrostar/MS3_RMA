@@ -50,12 +50,13 @@ export class AboutPage {
   }
 
   deleteData(item) {
-    let alert = this.alertCtrl.create({
+    /*let alert = this.alertCtrl.create({
       title: 'Löschen gedrückt',
       subTitle: localStorage.getItem("Name"),
       buttons: ['OK']
     });
-    alert.present();
+    alert.present();*/
+    console.log(localStorage.getItem("SternwarteASDF"));
   }
 }
 

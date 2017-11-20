@@ -22,14 +22,29 @@ export class FormInputPage {
   name;
   eroeffnet;
   ort;
+  abc:String;
+  object={
+    oname:String,
+    oeroefnnet:String,
+    oort:String
+  };
   saveData(){
+    this.object.oname=this.name;
+    this.object.oeroefnnet=this.eroeffnet;
+    this.object.oort=this.ort;
+    console.log(this.object);
+    this.abc=this.name+""
+    console.log("hier einmal abc:"+this.abc);
+    localStorage.setItem("Sternwarte"+this.name, JSON.stringify(this.object));
+
+    /*
     localStorage.setItem("name", this.name);
     console.log("geschrieben:"+this.name);
     localStorage.setItem("ort",this.ort);
     console.log("geschrieben:"+this.ort);
     localStorage.setItem("eroeffnet", this.eroeffnet);
     console.log("geschrieben:"+this.name);
-    alert(localStorage.getItem("name") + " " + localStorage.getItem("ort"));
+    alert(localStorage.getItem("name") + " " + localStorage.getItem("ort"));*/
   }
   restoreContents(){
     //stelle hier die Inhalte wieder her, sodass oben nicht immer alles überschrieben wird!!!
