@@ -29,7 +29,15 @@ export class FormInputPage {
     oort:String
   };
   saveData(){
-    this.zaehler=localStorage.getItem("zaehler");
+    alert("Hinzufügen gedrückt");
+    this.zaehler=parseInt(localStorage.getItem("zaehler"));
+    if(!this.zaehler) {
+      if(localStorage.getItem("Sternwarte1")) { 
+        this.zaehler = 99;
+      } else {
+        this.zaehler = 0;
+      }
+    }
     this.zaehler=this.zaehler+1;
     localStorage.setItem("zaehler",this.zaehler);
 

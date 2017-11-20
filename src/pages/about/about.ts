@@ -3,15 +3,10 @@ import {NavController} from 'ionic-angular';
 import {AlertController} from 'ionic-angular';
 import {Http} from '@angular/http';
 import 'rxjs/add/operator/map';
-import {Injectable} from '@angular/core';
+// import {Injectable} from '@angular/core';
 import 'rxjs/Rx';
 import { PopoverController } from 'ionic-angular';
 import {FormInputPage} from "../form-input/form-input";
-
-
-
-
-
 
 @Component({
   selector: 'page-about',
