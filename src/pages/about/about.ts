@@ -5,6 +5,12 @@ import {Http} from '@angular/http';
 import 'rxjs/add/operator/map';
 import {Injectable} from '@angular/core';
 import 'rxjs/Rx';
+import { PopoverController } from 'ionic-angular';
+import {FormInputPage} from "../form-input/form-input";
+
+
+
+
 
 
 @Component({
@@ -15,7 +21,7 @@ import 'rxjs/Rx';
 export class AboutPage {
   posts: any;
 
-  constructor(public navCtrl: NavController, public alertCtrl: AlertController, public http: Http) {
+  constructor(public navCtrl: NavController, public alertCtrl: AlertController, public http: Http, public popoverCtrl: PopoverController) {
     this.http.get('/assets/Sternwarten.json').map(res => res.json()).subscribe(data => {
       this.posts = data;
     });
@@ -34,22 +40,22 @@ export class AboutPage {
   }
 
   addData() {
-    let alert = this.alertCtrl.create({
+    /*let alert = this.alertCtrl.create({
       title: 'Hinzufügen gedrückt',
       subTitle: 'Du hast hinzufügen gedrückt und dabei toll ausgesehen!',
       buttons: ['OK']
     });
-    alert.present();
+    alert.present();*/
+    this.navCtrl.push(FormInputPage);
   }
 
   deleteData(item) {
     let alert = this.alertCtrl.create({
       title: 'Löschen gedrückt',
-      subTitle: 'Du hast löschen gedrückt!' + item,
+      subTitle: localStorage.getItem("Name"),
       buttons: ['OK']
     });
     alert.present();
   }
-
 }
 

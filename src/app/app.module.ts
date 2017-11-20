@@ -12,6 +12,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import {SettingsPage} from "../pages/settings/settings";
+import {FormInputPage} from "../pages/form-input/form-input";
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {SettingsPage} from "../pages/settings/settings";
     ContactPage,
     HomePage,
     TabsPage,
-    SettingsPage
+    SettingsPage,
+    FormInputPage
   ],
   imports: [
     BrowserModule,
@@ -34,7 +36,8 @@ import {SettingsPage} from "../pages/settings/settings";
     ContactPage,
     HomePage,
     TabsPage,
-    SettingsPage
+    SettingsPage,
+    FormInputPage
   ],
   providers: [
     StatusBar,
