@@ -1,0 +1,36 @@
+<!--
+  Generated template for the FormInputPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Name der Sternwarte hinzufügen</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+
+    <ion-item>
+      <ion-label fixed>Name:</ion-label>
+      <ion-input type="text" [(ngModel)]="name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>Ort:</ion-label>
+      <ion-input type="text" [(ngModel)]="ort"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>eröffnet:</ion-label>
+      <ion-input type="text" [(ngModel)]="eroeffnet"></ion-input>
+
+    </ion-item>
+  </ion-list>
+  <button ion-button (click)="saveData()">Hinzufügen</button>
+</ion-content>
