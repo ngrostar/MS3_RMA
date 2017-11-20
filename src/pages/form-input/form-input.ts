@@ -19,32 +19,25 @@ export class FormInputPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
   //Idee: hier statt Variablen ein OBJEKT!
+  zaehler;
   name;
   eroeffnet;
   ort;
-  abc:String;
   object={
     oname:String,
     oeroefnnet:String,
     oort:String
   };
   saveData(){
+    this.zaehler=localStorage.getItem("zaehler");
+    this.zaehler=this.zaehler+1;
+    localStorage.setItem("zaehler",this.zaehler);
+
     this.object.oname=this.name;
     this.object.oeroefnnet=this.eroeffnet;
     this.object.oort=this.ort;
     console.log(this.object);
-    this.abc=this.name+""
-    console.log("hier einmal abc:"+this.abc);
-    localStorage.setItem("Sternwarte"+this.name, JSON.stringify(this.object));
-
-    /*
-    localStorage.setItem("name", this.name);
-    console.log("geschrieben:"+this.name);
-    localStorage.setItem("ort",this.ort);
-    console.log("geschrieben:"+this.ort);
-    localStorage.setItem("eroeffnet", this.eroeffnet);
-    console.log("geschrieben:"+this.name);
-    alert(localStorage.getItem("name") + " " + localStorage.getItem("ort"));*/
+    localStorage.setItem("Sternwarte"+this.zaehler, JSON.stringify(this.object));
   }
   restoreContents(){
     //stelle hier die Inhalte wieder her, sodass oben nicht immer alles überschrieben wird!!!
