@@ -29,14 +29,15 @@ export class FormInputPage {
   object = {
     name: String,
     jahr: String,
-    ort: String
+    ort: String,
+    index: String
   };
 
   saveData() {
     if (this.name && this.ort && this.jahr) {
       this.zaehler = parseInt(localStorage.getItem("zaehler"));
       if (!this.zaehler) {
-          this.zaehler = 0;
+        this.zaehler = 0;
       }
       this.zaehler = this.zaehler + 1;
       localStorage.setItem("zaehler", this.zaehler);
@@ -44,6 +45,7 @@ export class FormInputPage {
       this.object.name = this.name;
       this.object.jahr = this.jahr;
       this.object.ort = this.ort;
+      this.object.index = this.zaehler.toString();
       console.log(this.object);
       localStorage.setItem("Sternwarte" + this.zaehler.toString(), JSON.stringify(this.object));
 

@@ -22,11 +22,6 @@ export class AboutPage {
     this.reloadItems();
 
     console.log(this.posts);
-    if (this.posts.length==0) {
-      this.http.get('/assets/Sternwarten.json').map(res => res.json()).subscribe(data => {
-        this.posts = data;
-      });
-    }
 
     events.subscribe('item:added', (name) => {
       this.reloadItems();
@@ -60,7 +55,8 @@ export class AboutPage {
       buttons: ['OK']
     });
     alert.present();*/
-    console.log(localStorage.getItem("SternwarteASDF"));
+    localStorage.removeItem("Sternwarte"+item.index);
+    this.reloadItems();
   }
 
   reloadItems() {
@@ -70,12 +66,20 @@ export class AboutPage {
       zaehler = 0;
     }
 
+    this.posts=[];
+
     for (let i = 0; i < zaehler; i++) {
       let key = "Sternwarte" + (i+1).toString();
       let item = JSON.parse(localStorage.getItem(key));
       if (item) {
-        this.posts[i] = item;
+        this.posts[this.posts.length] = item;
       }
+    }
+    
+    if (this.posts.length==0) {
+      this.http.get('/assets/Sternwarten.json').map(res => res.json()).subscribe(data => {
+        this.posts = data;
+      });
     }
   }
 

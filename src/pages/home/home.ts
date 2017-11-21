@@ -16,27 +16,13 @@ export class HomePage {
   getGPS() {
     console.log("getting Location");
     this.geolocation.getCurrentPosition().then((resp) => {
+      console.log("trotzdem da");
       this.lat = resp.coords.latitude;
       this.long = resp.coords.longitude;
     }).catch((error) => {
       console.log('Error getting location', error);
     });
-
-    let watch = this.geolocation.watchPosition();
-    watch.subscribe((data) => {
-      // data can be a set of coordinates, or an error (if an error occurred).
-      // data.coords.latitude
-      // data.coords.longitude
-    });
-
   }
 
-  // funktioniert beides nicht richtig!
-  t = setInterval(this.getGPS, 2000);
-  // timer2 = setInterval(function(){
-  //   alert("setTimeout");
-  //   let p = this.getGPS;
-  // }, 2000);
-
-
+  // t = setInterval(this.getGPS, 2000);
 }
