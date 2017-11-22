@@ -80,7 +80,7 @@ export class AboutPage {
       this.http.get('/assets/Sternwarten.json').map(res => res.json()).subscribe(data => {
         this.posts = data;
       });
-      localStorage.setItem("zaehler", 0);
+      localStorage.setItem("zaehler", "0");
     }
   }
 

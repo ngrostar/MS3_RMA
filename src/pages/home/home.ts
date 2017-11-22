@@ -24,5 +24,5 @@ export class HomePage {
     });
   }
 
-  // t = setInterval(this.getGPS, 2000);
+   //t = setInterval(this.getGPS, 2000);
 }

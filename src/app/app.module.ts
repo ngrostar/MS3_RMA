@@ -14,6 +14,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import {SettingsPage} from "../pages/settings/settings";
 import {FormInputPage} from "../pages/form-input/form-input";
+import {KartePage} from "../pages/karte/karte";
 import { Geolocation } from '@ionic-native/geolocation';  // https://ionicframework.com/docs/native/geolocation/
 
 @NgModule({
@@ -24,7 +25,8 @@ import { Geolocation } from '@ionic-native/geolocation';  // https://ionicframew
     HomePage,
     TabsPage,
     SettingsPage,
-    FormInputPage
+    FormInputPage,
+    KartePage
   ],
   imports: [
     BrowserModule,
@@ -39,13 +41,14 @@ import { Geolocation } from '@ionic-native/geolocation';  // https://ionicframew
     HomePage,
     TabsPage,
     SettingsPage,
-    FormInputPage
+    FormInputPage,
+    KartePage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    Geolocation,
+    Geolocation
   ]
 })
 export class AppModule {}
