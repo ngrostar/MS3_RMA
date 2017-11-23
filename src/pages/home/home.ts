@@ -18,7 +18,6 @@ export class HomePage {
     if(SettingsPage.isToggled=true){
     console.log("getting Location");
     this.geolocation.getCurrentPosition().then((resp) => {
-      console.log("trotzdem da");
       this.lat = resp.coords.latitude;
       this.long = resp.coords.longitude;
     }).catch((error) => {

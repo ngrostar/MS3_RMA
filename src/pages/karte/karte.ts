@@ -25,16 +25,10 @@ export class KartePage {
   map: any;
 
   constructor(public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams, public geolocation: Geolocation) {
+    this.loadMap();
   }
 
   ionViewDidLoad(){
-    this.loadMap();
-    // let item = this.navParams.get('post');
-    // console.log(item);
-    // // while(!this.map) {
-    //   console.log(this.map);
-    // // }
-    // this.addSpecificMarker(item);
   }
 
   openModal() {
@@ -44,7 +38,30 @@ export class KartePage {
       for(let i=0; i<data.length; i++) {
         this.addSpecificMarker(data[i]);
       }
+      this.map.setZoom(6);
+      let germanCenter = new google.maps.LatLng(51.07452793995768, 10.261352656249997);
+      this.map.setCenter(germanCenter);
+
+      let coordinates = [];
+
+      for(let i=0; i<data.length; i++) {
+        coordinates[coordinates.length] = new google.maps.LatLng(data[i].breite, data[i].laenge);
+      }
+      console.log(coordinates);
+      let polyline = new google.maps.Polyline({
+        path: coordinates,
+        strokeColor: '#FF0000',
+        strokeOpacity: 1.0,
+        strokeWeight: 2
+      });
+      console.log(polyline);
+      polyline.setMap(this.map);
+// Polyline leeren
+//polyline.setPath([]);
     });
+
+
+
     listModal.present();
   }
 
@@ -69,33 +86,31 @@ export class KartePage {
 
   addSpecificMarker(post){
     console.log("Trying to add marker for " + post.name);
-    // console.log("Trying to add marker for test");
-    // let latLng = new google.maps.LatLng(52,8);
-    
+
     let latLng = new google.maps.LatLng(post.laenge, post.breite);
     this.map.setCenter(latLng);
 
     let marker = new google.maps.Marker({
       map: this.map,
       animation: google.maps.Animation.DROP,
-      position: latLnge
+      position: latLng
     });
 
-    let content = "<h4>"+post.name+"</h4>";
-    // let content = "<h4>test</h4>";
+    let content = "<h2>"+post.name+"</h2><p>Länge: " + post.laenge + "<br>Breite: " + post.breite + "</p>";
 
     this.addInfoWindow(marker, content);
   }
 
-  addMarker(){
-
+  addCenterMarker(){
     let marker = new google.maps.Marker({
       map: this.map,
       animation: google.maps.Animation.DROP,
       position: this.map.getCenter()
     });
 
-    let content = "<h4>Information!</h4>";
+    console.log(this.map.getCenter().lat(), this.map.getCenter().lng());
+
+    let content = "<h2>Zentrum!</h2>";
 
     this.addInfoWindow(marker, content);
 
