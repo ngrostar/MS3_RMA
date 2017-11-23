@@ -1,5 +1,7 @@
 import {Component} from '@angular/core';
-import {NavController} from 'ionic-angular';
+import {NavController, NavParams, ViewController, ModalController } from "ionic-angular";
+
+'ionic-angular';
 import {AlertController} from 'ionic-angular';
 import {Http} from '@angular/http';
 import 'rxjs/add/operator/map';
@@ -17,16 +19,23 @@ import {KartePage} from "../karte/karte";
 
 export class AboutPage {
   posts: any;
+  modal: boolean;
 
-  constructor(public navCtrl: NavController, public alertCtrl: AlertController, public http: Http, public events: Events, public popoverCtrl: PopoverController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public viewCtrl: ViewController, public alertCtrl: AlertController, public http: Http, public events: Events, public popoverCtrl: PopoverController) {
     this.posts = [];
     this.reloadItems();
+
+    this.modal = this.navParams.get('modal');
+    if(!this.modal) this.modal = false;
+    console.log("modal " + this.navParams.get('modal'));
 
     console.log(this.posts);
 
     events.subscribe('item:added', (name) => {
       this.reloadItems();
     });
+    // if(this.modal) {this.closeModal();}
+
   }
 
   showAlert(item) {
@@ -83,6 +92,10 @@ export class AboutPage {
       });
       localStorage.setItem("zaehler", "0");
     }
+  }
+
+  closeModal() {
+    this.viewCtrl.dismiss(this.posts);
   }
 
   toMaps(post) {
