@@ -8,6 +8,7 @@ import 'rxjs/Rx';
 import { PopoverController } from 'ionic-angular';
 import {FormInputPage} from "../form-input/form-input";
 import { Events } from 'ionic-angular';
+import {KartePage} from "../karte/karte";
 
 @Component({
   selector: 'page-about',
@@ -82,6 +83,11 @@ export class AboutPage {
       });
       localStorage.setItem("zaehler", "0");
     }
+  }
+
+  toMaps(post) {
+    let data = {'post': post};
+    this.navCtrl.push(KartePage, data);
   }
 
 }

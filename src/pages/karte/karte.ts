@@ -1,7 +1,8 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
-declare var google;
+// import {AboutPage} from "../about/about";
+declare let google;
 /**
  * Generated class for the KartePage page.
  *
@@ -9,6 +10,9 @@ declare var google;
  * Ionic pages and navigation.
  */
 
+// https://developers.google.com/maps/documentation/javascript/examples/directions-simple
+
+//https://www.joshmorony.com/passing-data-between-pages-in-ionic-2/
 
 @Component({
   selector: 'page-karte',
@@ -19,12 +23,14 @@ export class KartePage {
   @ViewChild('map') mapElement: ElementRef;
   map: any;
 
-  constructor(public navCtrl: NavController, public geolocation: Geolocation) {
-
+  constructor(public navCtrl: NavController, public navParams: NavParams, public geolocation: Geolocation) {
   }
 
   ionViewDidLoad(){
     this.loadMap();
+    let item = this.navParams.get('post');
+    console.log(item);
+    this.addSpecificMarker(item);
   }
 
   loadMap(){
@@ -36,7 +42,7 @@ export class KartePage {
         center: latLng,
         zoom: 15,
         mapTypeId: google.maps.MapTypeId.ROADMAP
-      }
+      };
 
       this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
 
@@ -45,6 +51,25 @@ export class KartePage {
     });
 
   }
+
+  addSpecificMarker(post){
+    console.log("Trying to add marker for " + post.name);
+    // console.log("Trying to add marker for test");
+    // let latLng = new google.maps.LatLng(52,8);
+    let latLng = new google.maps.LatLng(post.breite, post.laenge);
+    this.map.setCenter(latLng);
+    let marker = new google.maps.Marker({
+      map: this.map,
+      animation: google.maps.Animation.DROP,
+      position: latLng
+    });
+
+    let content = "<h4>"+post.name+"</h4>";
+    // let content = "<h4>test</h4>";
+
+    this.addInfoWindow(marker, content);
+  }
+
   addMarker(){
 
     let marker = new google.maps.Marker({
