@@ -13,11 +13,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   selector: 'page-settings',
   templateUrl: 'settings.html',
 })
+
 export class SettingsPage {
-
+  static isToggled:boolean;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    SettingsPage.isToggled=true;
   }
-
+   notify() {
+    console.log("Toggled: "+ SettingsPage.isToggled);
+    SettingsPage.isToggled=false;
+  }
   ionViewDidLoad() {
     console.log('ionViewDidLoad SettingsPage');
   }

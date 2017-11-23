@@ -56,12 +56,12 @@ export class KartePage {
     console.log("Trying to add marker for " + post.name);
     // console.log("Trying to add marker for test");
     // let latLng = new google.maps.LatLng(52,8);
-    let latLng = new google.maps.LatLng(post.breite, post.laenge);
-    this.map.setCenter(latLng);
+    let latLnge = new google.maps.LatLng(post.breite, post.laenge);
+    this.map.setCenter(latLnge);
     let marker = new google.maps.Marker({
       map: this.map,
       animation: google.maps.Animation.DROP,
-      position: latLng
+      position: latLnge
     });
 
     let content = "<h4>"+post.name+"</h4>";

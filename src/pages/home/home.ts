@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
-import {Geolocation} from '@ionic-native/geolocation';  // https://ionicframework.com/docs/native/geolocation/
+import {Geolocation} from '@ionic-native/geolocation';
+import {SettingsPage} from "../settings/settings";  // https://ionicframework.com/docs/native/geolocation/
 
 @Component({
   selector: 'page-home',
@@ -14,6 +15,7 @@ export class HomePage {
   }
 
   getGPS() {
+    if(SettingsPage.isToggled=true){
     console.log("getting Location");
     this.geolocation.getCurrentPosition().then((resp) => {
       console.log("trotzdem da");
@@ -21,7 +23,11 @@ export class HomePage {
       this.long = resp.coords.longitude;
     }).catch((error) => {
       console.log('Error getting location', error);
-    });
+    });}
+    else{
+      this.lat=-1;
+      this.long=-1;
+    }
   }
 
    //t = setInterval(this.getGPS, 2000);
