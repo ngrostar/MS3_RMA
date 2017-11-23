@@ -3,6 +3,9 @@
     <ion-title>
       Daten-Liste
     </ion-title>
+    <ion-buttons >
+      <button ion-button *ngIf="modal" (click)="closeModal()">set markers</button>
+    </ion-buttons>
     <ion-buttons end>
       <button ion-button icon-only (click)="addData()"><ion-icon name="add"></ion-icon></button>
     </ion-buttons>

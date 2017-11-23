@@ -1,6 +1,7 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ModalController } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
+import {AboutPage} from "../about/about";
 // import {AboutPage} from "../about/about";
 declare let google;
 /**
@@ -23,14 +24,28 @@ export class KartePage {
   @ViewChild('map') mapElement: ElementRef;
   map: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public geolocation: Geolocation) {
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams, public geolocation: Geolocation) {
   }
 
   ionViewDidLoad(){
     this.loadMap();
-    let item = this.navParams.get('post');
-    console.log(item);
-    this.addSpecificMarker(item);
+    // let item = this.navParams.get('post');
+    // console.log(item);
+    // // while(!this.map) {
+    //   console.log(this.map);
+    // // }
+    // this.addSpecificMarker(item);
+  }
+
+  openModal() {
+    let listModal = this.modalCtrl.create(AboutPage, { modal: true });
+    listModal.onDidDismiss(data => {
+      console.log(data);
+      for(let i=0; i<data.length; i++) {
+        this.addSpecificMarker(data[i]);
+      }
+    });
+    listModal.present();
   }
 
   loadMap(){
@@ -56,7 +71,7 @@ export class KartePage {
     console.log("Trying to add marker for " + post.name);
     // console.log("Trying to add marker for test");
     // let latLng = new google.maps.LatLng(52,8);
-    let latLng = new google.maps.LatLng(post.breite, post.laenge);
+    let latLng = new google.maps.LatLng(post.laenge, post.breite);
     this.map.setCenter(latLng);
     let marker = new google.maps.Marker({
       map: this.map,
