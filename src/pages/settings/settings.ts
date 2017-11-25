@@ -16,15 +16,27 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 export class SettingsPage {
   static isToggled:boolean;
+  static interval:number;
+  inputinterval;
+  isToggled=true;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     SettingsPage.isToggled=true;
   }
    notify() {
-    console.log("Toggled: "+ SettingsPage.isToggled);
-    SettingsPage.isToggled=false;
+    console.log(SettingsPage.isToggled);
+    if(SettingsPage.isToggled=true){
+      SettingsPage.isToggled=false;}
+    else{
+      SettingsPage.isToggled=true;
+    }
+     console.log("Toggled: "+ SettingsPage.isToggled);
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad SettingsPage');
+  }
+  changeInterval(){
+    SettingsPage.interval=this.inputinterval;
+    console.log("gesetztes Interval:"+ SettingsPage.interval);
   }
 
 }

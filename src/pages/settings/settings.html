@@ -23,6 +23,11 @@
       <ion-label>Position aufzeichnen</ion-label>
       <ion-toggle (ionChange)="notify()" checked="true"></ion-toggle>
     </ion-item>
+    <ion-item>
+      <ion-label fixed>Interval</ion-label>
+      <ion-input type="text" [(ngModel)]="inputinterval"></ion-input>
+    </ion-item>
+    <button ion-button (click)="changeInterval()">Ändern</button>
 
   </ion-list>
 
