@@ -1,15 +1,11 @@
 import {Component} from '@angular/core';
-import {NavController, NavParams, ViewController, ModalController } from "ionic-angular";
-
-'ionic-angular';
+import {Events, NavController, NavParams, ViewController, ModalController } from "ionic-angular";
 import {AlertController} from 'ionic-angular';
 import {Http} from '@angular/http';
 import 'rxjs/add/operator/map';
-// import {Injectable} from '@angular/core';
 import 'rxjs/Rx';
 import { PopoverController } from 'ionic-angular';
 import {FormInputPage} from "../form-input/form-input";
-import { Events } from 'ionic-angular';
 import {KartePage} from "../karte/karte";
 
 @Component({

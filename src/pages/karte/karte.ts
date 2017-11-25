@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { NavController, NavParams, ModalController } from 'ionic-angular';
+import {NavController, NavParams, ModalController, Events} from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import {AboutPage} from "../about/about";
 // import {AboutPage} from "../about/about";
@@ -23,12 +23,46 @@ export class KartePage {
 
   @ViewChild('map') mapElement: ElementRef;
   map: any;
+  route = [];
+  markersArray = [];
+  polyline;
 
-  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams, public geolocation: Geolocation) {
+  constructor(public navCtrl: NavController, public events: Events, public modalCtrl: ModalController, public navParams: NavParams, public geolocation: Geolocation) {
     this.loadMap();
+
+    this.polyline = new google.maps.Polyline({
+      path: this.route,
+      strokeColor: '#FF0000',
+      strokeOpacity: 1.0,
+      strokeWeight: 2,
+      map: this.map
+    });
+
+    events.subscribe('point:added', (point) => {
+      let newPoint = {'breite': point.lat, 'laenge': point.long, 'name': point.time};
+      // console.log("Punkt empfangen");
+      this.addPointToMap(newPoint);
+    });
   }
 
   ionViewDidLoad(){
+  }
+
+  addPointToMap(point) {
+      this.addSpecificMarker(point);
+      this.route[this.route.length] = new google.maps.LatLng(point.breite, point.laenge);
+      this.map.setCenter(this.route[this.route.length-1]);
+      this.polyline.setPath(this.route);
+      this.polyline.setMap(this.map);
+  }
+
+  clearPath() {
+    this.route = [];
+    this.polyline.setPath(this.route);
+    for (let i = 0; i < this.markersArray.length; i++) {
+      this.markersArray[i].setMap(null);
+    }
+    this.markersArray = [];
   }
 
   openModal() {
@@ -48,19 +82,17 @@ export class KartePage {
         coordinates[coordinates.length] = new google.maps.LatLng(data[i].breite, data[i].laenge);
       }
       console.log(coordinates);
-      let polyline = new google.maps.Polyline({
+      let polyline2 = new google.maps.Polyline({
         path: coordinates,
-        strokeColor: '#FF0000',
+        strokeColor: '#ff0000',
         strokeOpacity: 1.0,
-        strokeWeight: 2
+        strokeWeight: 2,
+        map: this.map
       });
-      console.log(polyline);
-      polyline.setMap(this.map);
-// Polyline leeren
-//polyline.setPath([]);
+      console.log(polyline2);
+      polyline2.setMap(this.map);
+      // Polyline leeren: polyline.setPath([]);
     });
-
-
 
     listModal.present();
   }
@@ -87,7 +119,7 @@ export class KartePage {
   addSpecificMarker(post){
     console.log("Trying to add marker for " + post.name);
 
-    let latLng = new google.maps.LatLng(post.laenge, post.breite);
+    let latLng = new google.maps.LatLng(post.breite, post.laenge);
     this.map.setCenter(latLng);
 
     let marker = new google.maps.Marker({
@@ -96,7 +128,9 @@ export class KartePage {
       position: latLng
     });
 
-    let content = "<h2>"+post.name+"</h2><p>Länge: " + post.laenge + "<br>Breite: " + post.breite + "</p>";
+    this.markersArray.push(marker);
+
+    let content = "<h6>"+post.name+"</h6><p>Länge: " + post.laenge + "<br>Breite: " + post.breite + "</p>";
 
     this.addInfoWindow(marker, content);
   }
@@ -107,6 +141,8 @@ export class KartePage {
       animation: google.maps.Animation.DROP,
       position: this.map.getCenter()
     });
+
+    this.markersArray.push(marker);
 
     console.log(this.map.getCenter().lat(), this.map.getCenter().lng());
 

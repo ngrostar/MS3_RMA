@@ -1,3 +1,9 @@
-page-settings {
+input.text-input {
+  text-align: right;
+}
 
+page-settings {
+  .right {
+    float: right;
+  }
 }

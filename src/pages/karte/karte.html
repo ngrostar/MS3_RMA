@@ -8,14 +8,17 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Map
+      Karte
     </ion-title>
-    <ion-buttons>
+    <ion-buttons end>
       <button ion-button (click)="addCenterMarker()"><ion-icon name="add"></ion-icon>&nbsp;Center</button>
     </ion-buttons>
-    <ion-buttons end>
-      <button ion-button (click)="openModal()"><ion-icon name="add"></ion-icon>&nbsp;Add Markers</button>
+    <ion-buttons>
+      <button ion-button (click)="clearPath()"><ion-icon name="trash"></ion-icon>&nbsp;Clear</button>
     </ion-buttons>
+    <!--<ion-buttons>-->
+      <!--<button ion-button (click)="openModal()"><ion-icon name="add"></ion-icon>&nbsp;Add Markers</button>-->
+    <!--</ion-buttons>-->
   </ion-navbar>
 </ion-header>
 

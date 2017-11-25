@@ -8,7 +8,7 @@ import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
-
+import { MomentModule } from 'angular2-moment';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -30,6 +30,7 @@ import { Geolocation } from '@ionic-native/geolocation';  // https://ionicframew
   ],
   imports: [
     BrowserModule,
+    MomentModule,
     HttpModule,
     IonicModule.forRoot(MyApp)
   ],
