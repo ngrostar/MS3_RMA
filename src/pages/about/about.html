@@ -3,6 +3,9 @@
     <ion-title>
       Daten-Liste
     </ion-title>
+    <ion-buttons >
+      <button ion-button *ngIf="modal" (click)="closeModal()">set markers</button>
+    </ion-buttons>
     <ion-buttons end>
       <button ion-button icon-only (click)="addData()"><ion-icon name="add"></ion-icon></button>
     </ion-buttons>
@@ -12,14 +15,17 @@
 <ion-content padding>
   <ion-list>
 
-    <ion-item-sliding *ngFor="let item of items">
+    <ion-item-sliding *ngFor="let post of posts">
 
-      <ion-item (click)="showAlert()">
-        {{item}}
+      <ion-item (click)="showAlert(post)">
+        {{post.name}}
       </ion-item>
 
       <ion-item-options>
-        <button ion-button icon-only (click)="deleteData(item)" danger>
+        <button ion-button (click)="toMaps(post)" danger>
+          use for maps
+        </button>
+        <button ion-button icon-only (click)="deleteData(post)" danger>
           <ion-icon name="trash"></ion-icon>
         </button>
       </ion-item-options>

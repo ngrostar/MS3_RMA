@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {Events, IonicPage, NavController, NavParams} from 'ionic-angular';
 
 /**
  * Generated class for the SettingsPage page.
@@ -13,13 +13,36 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   selector: 'page-settings',
   templateUrl: 'settings.html',
 })
-export class SettingsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+export class SettingsPage {
+  static isToggled:boolean = true;
+  static interval:number;
+  inputinterval;
+
+
+  constructor(public navCtrl: NavController, public events: Events, public navParams: NavParams) {
+    this.inputinterval = 4000;
+
+  }
+
+  toggleLocationGetting() {
+    if (SettingsPage.isToggled){
+      SettingsPage.isToggled = false;}
+    else {
+      SettingsPage.isToggled = true;
+    }
+    console.log("Toggled: "+ SettingsPage.isToggled);
+    this.events.publish('toggled');
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SettingsPage');
+  }
+
+  changeInterval(){
+    SettingsPage.interval = this.inputinterval;
+    console.log("gesetztes Interval:"+ SettingsPage.interval);
+    this.events.publish('changedInterval', this.inputinterval);
   }
 
 }

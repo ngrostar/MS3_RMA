@@ -5,14 +5,30 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>Einstellungen</ion-title>
+    <ion-title>
+      Einstellungen
+    </ion-title>
   </ion-navbar>
-
 </ion-header>
 
+<ion-content>
 
-<ion-content padding>
-   Hallo
+  <ion-list>
+    <ion-list-header>
+      Location Einstellungen
+    </ion-list-header>
+
+    <ion-item>
+      <ion-label>Position aufzeichnen</ion-label>
+      <ion-toggle (ionChange)="toggleLocationGetting()" checked="true"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>Interval</ion-label>
+      <ion-input type="number" [(ngModel)]="inputinterval"></ion-input>
+    </ion-item>
+    <button ion-button class="right" (click)="changeInterval()">Ändern</button>
+
+  </ion-list>
+
 </ion-content>

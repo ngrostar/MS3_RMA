@@ -5,13 +5,24 @@
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
+  <h2>Stalk Yourself</h2>
   <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
+    Willkommen zu unserer Selfstalker-App!
   </p>
   <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
+    Falls Sie nähere Infos benötigen, besuchen Sie bitte die Anleitungsseite.
+    Viel Spaß!
   </p>
+
+  <ion-buttons>
+    <button ion-button (click)="goToMaps()"><ion-icon name="arrow-round-forward">&nbsp;&nbsp;Standort auf der Karte ansehen</ion-icon></button>
+  </ion-buttons>
+
+  <p>
+    Breite: {{point.lat}}<br>
+    Länge: {{point.long}}<br><br>
+    Letzte Aktualisierung: {{point.time | amDateFormat:'HH:mm:ss'}} Uhr
+  </p>
+  <br>
+  <img src="assets/imgs/homepicture.jpg" />
 </ion-content>

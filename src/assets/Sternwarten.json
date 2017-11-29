@@ -1,0 +1,70 @@
+[{
+	"name": "Planetarium Osnabrück",
+	"ort": "Osnabrück Schölerberg",
+	"laenge": 52.249327,
+	"breite": 8.069599,
+	"jahr": 1986
+},
+{
+	"name": "Sternwarte vom Naturwissenschaftlichen Verein",
+	"ort": "Melle",
+	"laenge": 52.20515,
+	"breite": 8.323383,
+	"jahr": 1996
+},
+{
+	"name": "Zeiss-Planetarium Jena",
+	"ort": "Jena",
+	"laenge": 50.931815,
+	"breite": 11.586928,
+	"jahr": 1926
+},
+{
+	"name": "Thüringer Landessternwarte Tautenburg",
+	"ort": "Tautenburg",
+	"laenge": 50.98276,
+	"breite": 11.71055,
+	"jahr": 1960
+},
+{
+	"name": "Nikolaus-Copernicus-Planetarium",
+	"ort": "Nürnberg",
+	"laenge": 49.448017,
+	"breite": 11.06307,
+	"jahr": 1927
+},
+{
+	"name": "Wilhelm-Foerster-Sternwarte",
+	"ort": "Berlin",
+	"laenge": 52.457551,
+	"breite": 13.349414,
+	"jahr": 1965
+},
+{
+	"name": "Sternwarte Sonneberg",
+	"ort": "Sonneberg",
+	"laenge": 50.377024,
+	"breite": 11.190265,
+	"jahr": 1925
+},
+{
+	"name": "IUZ Sternwarte Bochum",
+	"ort": "Bochum",
+	"laenge": 51.4269,
+	"breite": 7.19255,
+	"jahr": 1946
+},
+{
+	"name": "Bayerische Volkssternwarte",
+	"ort": "Muenchen",
+	"laenge": 48.121922,
+	"breite": 11.606862999999976,
+	"jahr": 1947
+},
+{
+	"name": "Hamburger Sternwarte Bergedorf",
+	"ort": "Hamburg",
+	"laenge": 53.48019,
+	"breite": 10.23938,
+	"jahr": 1912
+}]
